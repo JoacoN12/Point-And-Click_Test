@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://KinematicBody2D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Node2D.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 982, 124 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 84, 458.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 36, 451 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Chad" parent="." instance=ExtResource( 1 )]
+position = Vector2( 111, 678 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Chad"]
+visible = false
+margin_left = -19.0
+margin_top = -61.3333
+margin_right = 111.0
+margin_bottom = 18.6667
+rect_scale = Vector2( 0.436915, 0.325389 )
+custom_colors/default_color = Color( 1, 0, 0, 1 )
+text = "Wow this color reminds me of apples"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Chad"]
+visible = false
+margin_left = 20.0
+margin_top = -36.6667
+margin_right = 150.0
+margin_bottom = 43.3333
+rect_scale = Vector2( 0.436915, 0.325389 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+text = "I cant go back yet
+I need to see whats here"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 837, 895 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 134, 114 )
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 1085.0
+margin_top = 353.0
+margin_right = 1125.0
+margin_bottom = 393.0
+rect_scale = Vector2( 9.56457, 9.41495 )
+color = Color( 1, 0, 0, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+visible = false
+margin_left = 855.0
+margin_top = 721.0
+margin_right = 865.0
+margin_bottom = 730.0
+rect_scale = Vector2( 1.38855, 7.55541 )
+color = Color( 0.32549, 0, 0, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect3"]
+margin_left = -28.807
+margin_top = 8.47076
+margin_right = -16.221
+margin_bottom = 8.50676
+rect_scale = Vector2( 6.0945, 328.692 )
+color = Color( 1, 0, 0, 1 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 1079.0
+margin_top = 350.0
+margin_right = 1119.0
+margin_bottom = 390.0
+rect_scale = Vector2( 9.83979, 9.51524 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -227, 441 )
+shape = SubResource( 2 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2( -74, 444 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( -65, 443 )
+shape = SubResource( 3 )
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
